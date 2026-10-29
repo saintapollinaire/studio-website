@@ -13,22 +13,22 @@ Mémoire partagée du projet. Claude et Grok ne gardent aucun souvenir d'une ses
 
 - **Phase** : mise en place
 - **En cours** : —
-- **Prochaine étape** : compléter les sections `[À COMPLÉTER]` de GUIDELINE.md (Athos)
-- **Bloqué en attente d'Athos** : nom du studio, direction artistique, stack
+- **Prochaine étape** : initialiser le projet Astro et `src/styles/tokens.css` avec les valeurs provisoires (Claude)
+- **Bloqué en attente d'Athos** : nom du studio, logo, textes de positionnement, tarifs
 
 ## Décisions prises
 
 | Date | Décision | Par |
 |---|---|---|
 | 2026-10-29 | Dépôt GitHub comme espace de travail commun ; Claude construit, Grok relit, Athos arbitre | Athos |
+| 2026-10-29 | Valeurs provisoires pour le ton, la palette, les typographies, la stack et le budget, pour ne pas bloquer le démarrage | Athos |
 
 ## Questions ouvertes
 
 - [ ] Nom du studio
-- [ ] Direction artistique (ton, références, typographies, palette)
-- [ ] Stack technique
+- [ ] Confirmer ou remplacer les valeurs `PROVISOIRE` de GUIDELINE.md
+- [ ] Références de sites admirés
 - [ ] Liste définitive des pages
-- [ ] Budget quotidien de déclenchements
 
 ## Historique
 

@@ -1,0 +1,6 @@
+---
+// The site has no unprefixed pages: send visitors to the default locale.
+import { defaultLocale, pathFor } from '../i18n';
+
+return Astro.redirect(pathFor('home', defaultLocale));
+---

@@ -1,0 +1,36 @@
+---
+import { STUDIO_NAME } from '../config/site';
+import { pathFor, t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const strings = t(locale);
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© {year} {STUDIO_NAME}. {strings.footer.rights}</p>
+    <a href={pathFor('legal', locale)}>{strings.nav.legal}</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: var(--rule-width) solid var(--color-rule);
+    margin-top: var(--space-32);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>

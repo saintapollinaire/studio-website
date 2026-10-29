@@ -1,0 +1,45 @@
+---
+// Placeholder for every page except home. Each page will get its own file
+// once its content is written; remove it from this list at that point.
+import Base from '../../layouts/Base.astro';
+import { locales, pages, pathFor, t, type Locale, type PageId } from '../../i18n';
+
+export function getStaticPaths() {
+  const ids = (Object.keys(pages) as PageId[]).filter((id) => id !== 'home');
+  return locales.flatMap((lang) =>
+    ids.map((id) => ({ params: { lang, slug: pages[id][lang] }, props: { id } })),
+  );
+}
+
+const locale = Astro.params.lang as Locale;
+const { id } = Astro.props as { id: Exclude<PageId, 'home'> };
+const strings = t(locale);
+const title = strings.nav[id];
+---
+
+<Base locale={locale} page={id} title={title}>
+  <section class="placeholder container">
+    <h1 class="placeholder__title">{title}</h1>
+    <p class="placeholder__body">{strings.placeholder.body}</p>
+    <a href={pathFor('home', locale)}>{strings.placeholder.back}</a>
+  </section>
+</Base>
+
+<style>
+  .placeholder {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-24);
+  }
+
+  .placeholder__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-xl);
+    line-height: var(--leading-tight);
+  }
+
+  .placeholder__body {
+    color: var(--color-text-muted);
+  }
+</style>

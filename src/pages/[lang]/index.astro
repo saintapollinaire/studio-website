@@ -1,0 +1,113 @@
+---
+import Base from '../../layouts/Base.astro';
+import { STUDIO_NAME } from '../../config/site';
+import { locales, navPages, pathFor, t, type Locale } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const strings = t(locale);
+---
+
+<Base locale={locale} page="home" title={strings.home.title}>
+  <section class="hero container grid">
+    <p class="hero__kicker label">{strings.home.kicker}</p>
+    <h1 class="hero__title">{STUDIO_NAME}</h1>
+    <p class="hero__lead">{strings.home.lead}</p>
+  </section>
+
+  <section class="index container grid" aria-labelledby="index-title">
+    <h2 id="index-title" class="index__title label">{strings.home.indexTitle}</h2>
+    <ol class="index__list">
+      {
+        navPages.map((id, i) => (
+          <li class="index__item">
+            <a href={pathFor(id, locale)}>
+              <span class="index__number" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="index__name">{strings.nav[id]}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: var(--space-24) var(--space-16);
+    row-gap: var(--space-6);
+  }
+
+  .hero__kicker {
+    grid-column: 1 / -1;
+  }
+
+  .hero__title {
+    grid-column: 1 / -1;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--text-display);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .hero__lead {
+    grid-column: 1 / -1;
+    max-width: var(--measure);
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+  }
+
+  .index {
+    row-gap: var(--space-6);
+  }
+
+  .index__title {
+    grid-column: 1 / -1;
+  }
+
+  .index__list {
+    grid-column: 1 / -1;
+    border-top: var(--rule-width) solid var(--color-rule);
+  }
+
+  .index__item a {
+    display: grid;
+    grid-template-columns: var(--space-16) 1fr;
+    align-items: baseline;
+    padding-block: var(--space-4);
+    border-bottom: var(--rule-width) solid var(--color-rule);
+    text-decoration: none;
+  }
+
+  .index__number {
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  .index__name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+  }
+
+  @media (min-width: 64rem) {
+    .hero__lead {
+      grid-column: 7 / -1;
+    }
+
+    .index__title {
+      grid-column: 1 / 4;
+    }
+
+    .index__list {
+      grid-column: 4 / -1;
+    }
+  }
+</style>

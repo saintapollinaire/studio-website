@@ -12,8 +12,8 @@ Mémoire partagée du projet. Claude et Grok ne gardent aucun souvenir d'une ses
 ## État actuel
 
 - **Phase** : mise en place
-- **En cours** : —
-- **Prochaine étape** : initialiser le projet Astro et `src/styles/tokens.css` avec les valeurs provisoires (Claude)
+- **En cours** : PR `setup/astro` (squelette Astro, tokens, FR/EN, action Claude, CI) — en attente de revue Grok puis fusion par Athos
+- **Prochaine étape** : installer l'application GitHub Claude et ajouter la clé dans les secrets (Athos) ; donner à Grok l'accès au dépôt (Athos)
 - **Bloqué en attente d'Athos** : nom du studio, logo, textes de positionnement, tarifs
 
 ## Décisions prises
@@ -34,4 +34,5 @@ Mémoire partagée du projet. Claude et Grok ne gardent aucun souvenir d'une ses
 
 | Date | Auteur | Réf. | Événement |
 |---|---|---|---|
+| 2026-10-29 | Claude | PR setup/astro | Squelette Astro, tokens provisoires, i18n FR/EN, pages provisoires, CLAUDE.md, workflows Claude et CI |
 | 2026-10-29 | Athos | — | Création du dépôt, de GUIDELINE.md et de JOURNAL.md |
